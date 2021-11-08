@@ -5,10 +5,10 @@ kw=$(date +%V)
 dow=$(date +%u)
 
 mri_url='https://casinocatering.de/speiseplan/'
-mensa_url='https://www.sw-ka.de/de/essen/?view=ok&STYLE=popup_plain&c=adenauerring&p=1&kw='$kw
+mensa_url='https://www.sw-ka.de/de/essen/'
 
 food_mri=$(xsltproc --html --novalid --param dow $dow mri.xslt <(curl "${mri_url}"))
-food_mensa=$(xsltproc --html --novalid mensa.xslt <(curl "${mensa_url}"))
+food_mensa=$(python3 mensa.py ${mensa_url})
 
 last_message_id="$(cat /var/local/lib/mensabot_last_message_id)"
 
