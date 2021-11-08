@@ -30,13 +30,13 @@ for row in cantine.contents:
                         meals[line][meal_name] = price
 
 
-print("| Linie | Essen | Preis |")
-print("|-------|-------|-------|")
+print("| Linie | Essen | Preis |\\n")
+print("|-------|-------|-------|\\n")
 for line, items in meals.items():
     if items:
         meals = list(items.items())
-        print(f"| {line} | {meals[0][0]} | {meals[0][1]} |")
+        print(f"| {line} | {meals[0][0]} | {meals[0][1]} |\\n")
         for meal in meals[1:]:
             if "zu jedem Gericht ein Dessert oder Obst" in meal[0]:
                 continue
-            print(f"| | {meal[0]} | {meal[1]} |")
+            print(f"| | {meal[0]} | {meal[1]} |\\n")
