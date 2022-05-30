@@ -7,7 +7,7 @@ dow=$(date +%u)
 mri_url='https://casinocatering.de/speiseplan/'
 mensa_url='https://www.sw-ka.de/de/essen/'
 
-food_mri=$(xsltproc --html --novalid --param dow $dow mri.xslt <(curl "${mri_url}"))
+food_mri=$(xsltproc --html --novalid --param dow $dow mri.xslt <(curl -s "${mri_url}") 2>/dev/null)
 food_mensa=$(./.mensabot_venv/bin/python mensa.py ${mensa_url})
 
 last_message_id="$(cat /var/local/lib/mensabot_last_message_id)"
