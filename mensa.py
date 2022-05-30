@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import sys
+import re
 
 url = sys.argv[1]
 meals = {}
@@ -36,6 +37,6 @@ for line, items in meals.items():
         meals = list(items.items())
         print(f"| {line} | {meals[0][0]} | {meals[0][1]} |\\n")
         for meal in meals[1:]:
-            if "zu jedem Gericht ein Dessert oder Obst" in meal[0]:
+            if re.match(r".*zu jedem .*(Obst|Salat|Dessert).*", meal[0]):
                 continue
             print(f"| | {meal[0]} | {meal[1]} |\\n")
